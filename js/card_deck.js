@@ -5,7 +5,7 @@
     this.player2 = [];
     this.p1Text = "";
     this.p2Text = "";
-    
+
     this.count = function() {
       return this.cards.length;
     }
@@ -20,22 +20,22 @@
     this.printDeck = function() {
         cards = this.cards;
         text = "";
-        
-        for (i = 0; i < cards.length; i++) { 
+
+        for (i = 0; i < cards.length; i++) {
          text += cards[i].rank + " " + cards[i].suit + "\n";
         }
         return text;
     }
-    
+
     this.deal = function() {
         cards = this.cards;
-        
+
         for(i=0; i < 10; i=i+2) {
             this.player1.push(cards[i]);
             this.player2.push(cards[i+1]);
         }
     }
-    
+
     this.shuffle = function(n) {
       var i, j, k;
       var temp;
@@ -49,7 +49,7 @@
           this.cards[k] = temp;
         }
     }
-    
+
     this.printHands = function() {
         text = "";
         text += "{"
@@ -65,12 +65,12 @@
             text += "]";
         }
         text += "}";
-        
+
         return text;
     }
-    
+
   }
- 
+
   function Card(rank, suit) {
     this.rank = rank;
     this.suit = suit;
@@ -78,15 +78,17 @@
       console.log(this.rank + " of " + this.suit);
     }
   }
- 
-  d = new Deck();
-  d.init();
-  alert(d.printDeck());
-  d.shuffle(7);
-  alert(d.printDeck());
-  d.deal();
-  alert(d.printHands());
-  
-  $("button#reveal-cards").on("click", d.reveal);
-  
-  
+
+
+  $("button#reveal-cards").on("click", function() {
+    d = new Deck();
+    d.init();
+    alert(d.printDeck());
+    d.shuffle(7);
+    alert(d.printDeck());
+    d.deal();
+    alert(d.printHands());
+
+  });
+
+
